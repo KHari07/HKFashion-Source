@@ -59,12 +59,22 @@ The application is built on a **three-tier architecture** (Presentation, Busines
 | Layer | Technologies |
 |-------|--------------|
 | **Frontend** | HTML5, CSS3, JavaScript, Bootstrap 4/5 |
-| **Backend** | Java Servlets, JSP (Java Server Pages) |
+| **Backend** | Java - Servlets, JSP (Java Server Pages) |
 | **Database** | MySQL 5.7+ |
 | **Server** | Apache Tomcat 9+ |
 | **Build Tools** | Maven (pom.xml) |
 | **Development** | Eclipse IDE / IntelliJ IDEA, Git & GitHub |
 | **Database Tools** | XAMPP, MySQL Workbench |
+
+### Language Composition
+
+The repository consists of:
+
+| Language | Purpose |
+|----------|---------|
+| **Java** | Backend business logic, servlets, DAOs, and controllers |
+| **CSS** | Styling and UI design for frontend components |
+| **HTML** | JSP templating and markup structure |
 
 ---
 
@@ -76,12 +86,14 @@ The application follows a **three-tier architecture** pattern:
 ┌─────────────────────────────────────┐
 │         Client / Browser            │
 │    (User Interface Layer)           │
+│    HTML / CSS                       │
 └──────────────┬──────────────────────┘
                │
                ▼
 ┌─────────────────────────────────────┐
 │    JSP Pages & Frontend Assets      │
 │    (Presentation Layer)             │
+│    HTML + CSS + JavaScript          │
 └──────────────┬──────────────────────┘
                │
                ▼
@@ -108,11 +120,11 @@ The application follows a **three-tier architecture** pattern:
 
 ### Layer Responsibilities
 
-| Layer | Role |
-|-------|------|
-| **Presentation** | Handles all user interactions through JSP pages, HTML forms, and frontend components |
-| **Business Logic** | Processes application logic, validates data, manages workflows using Java Servlets and service classes |
-| **Data Access** | Communicates with MySQL database through DAO classes, handles CRUD operations |
+| Layer | Role | Primary Language |
+|-------|------|------------------|
+| **Presentation** | Handles all user interactions through JSP pages, HTML forms, and frontend components | HTML, CSS, JavaScript |
+| **Business Logic** | Processes application logic, validates data, manages workflows using Java Servlets and service classes | Java |
+| **Data Access** | Communicates with MySQL database through DAO classes, handles CRUD operations | Java |
 
 ---
 
@@ -239,168 +251,145 @@ User
 
 ### Use Case Diagram
 
-```plantuml
-@startuml
-left to right direction
-
-actor Customer
-actor Admin
-
-rectangle HKFashionStore {
-    Customer --> (Register)
-    Customer --> (Login)
-    Customer --> (Browse Products)
-    Customer --> (Search Products)
-    Customer --> (View Product Details)
-    Customer --> (Add To Cart)
-    Customer --> (Manage Cart)
-    Customer --> (Checkout)
-    Customer --> (Place Order)
-    Customer --> (View Order History)
-    Customer --> (Manage Profile)
+```mermaid
+graph LR
+    C[Customer]
+    A[Admin]
     
-    Admin --> (Admin Login)
-    Admin --> (View Dashboard)
-    Admin --> (Manage Products)
-    Admin --> (Manage Categories)
-    Admin --> (Manage Customers)
-    Admin --> (Manage Orders)
-    Admin --> (Monitor Inventory)
-}
-
-@enduml
+    C -->|Register| UC1[Register]
+    C -->|Login| UC2[Login]
+    C -->|Browse| UC3[Browse Products]
+    C -->|Search| UC4[Search Products]
+    C -->|View| UC5[View Product Details]
+    C -->|Cart| UC6[Add To Cart]
+    C -->|Manage| UC7[Manage Cart]
+    C -->|Checkout| UC8[Checkout]
+    C -->|Order| UC9[Place Order]
+    C -->|Track| UC10[View Order History]
+    C -->|Profile| UC11[Manage Profile]
+    
+    A -->|Auth| UC12[Admin Login]
+    A -->|Dashboard| UC13[View Dashboard]
+    A -->|Products| UC14[Manage Products]
+    A -->|Categories| UC15[Manage Categories]
+    A -->|Customers| UC16[Manage Customers]
+    A -->|Orders| UC17[Manage Orders]
+    A -->|Inventory| UC18[Monitor Inventory]
 ```
 
 ### Class Diagram
 
-```plantuml
-@startuml
-
-class User {
-    -userId: int
-    -name: String
-    -email: String
-    -password: String
-    -phone: String
-    -address: String
-    +getUserId(): int
-    +setUserDetails(String, String): void
-}
-
-class Product {
-    -productId: int
-    -name: String
-    -price: double
-    -description: String
-    -stock: int
-    -categoryId: int
-    +getProductId(): int
-    +getPrice(): double
-    +updateStock(int): void
-}
-
-class Category {
-    -categoryId: int
-    -categoryName: String
-    +getCategoryId(): int
-    +getCategoryName(): String
-}
-
-class Cart {
-    -cartId: int
-    -cartItems: List<CartItem>
-    +addItem(Product, int): void
-    +removeItem(int): void
-    +getTotal(): double
-    +clearCart(): void
-}
-
-class Order {
-    -orderId: int
-    -userId: int
-    -orderDate: Date
-    -totalAmount: double
-    -status: String
-    -orderItems: List<OrderItem>
-    +getOrderId(): int
-    +getStatus(): String
-    +updateStatus(String): void
-}
-
-class OrderItem {
-    -orderItemId: int
-    -orderId: int
-    -productId: int
-    -quantity: int
-    -price: double
-}
-
-User "1" --> "1" Cart : owns
-User "1" --> "*" Order : places
-Category "1" --> "*" Product : contains
-Cart "*" --> "*" Product : contains
-Order "1" --> "*" OrderItem : has
-Product "1" <-- "*" OrderItem : ordered
-
-@enduml
+```mermaid
+classDiagram
+    class User {
+        -int userId
+        -String name
+        -String email
+        -String password
+        -String phone
+        -String address
+        +getUserId() int
+        +setUserDetails() void
+    }
+    
+    class Product {
+        -int productId
+        -String name
+        -double price
+        -String description
+        -int stock
+        -int categoryId
+        +getProductId() int
+        +getPrice() double
+        +updateStock() void
+    }
+    
+    class Category {
+        -int categoryId
+        -String categoryName
+        +getCategoryId() int
+        +getCategoryName() String
+    }
+    
+    class Cart {
+        -int cartId
+        -List cartItems
+        +addItem() void
+        +removeItem() void
+        +getTotal() double
+        +clearCart() void
+    }
+    
+    class Order {
+        -int orderId
+        -int userId
+        -Date orderDate
+        -double totalAmount
+        -String status
+        -List orderItems
+        +getOrderId() int
+        +getStatus() String
+        +updateStatus() void
+    }
+    
+    class OrderItem {
+        -int orderItemId
+        -int orderId
+        -int productId
+        -int quantity
+        -double price
+    }
+    
+    User "1" --> "1" Cart : owns
+    User "1" --> "*" Order : places
+    Category "1" --> "*" Product : contains
+    Cart "*" --> "*" Product : contains
+    Order "1" --> "*" OrderItem : has
+    Product "1" <-- "*" OrderItem : ordered
 ```
 
 ### Sequence Diagram – Order Placement
 
-```plantuml
-@startuml
+```mermaid
+sequenceDiagram
+    actor Customer
+    participant WebPage
+    participant OrderController
+    participant OrderService
+    participant Database
 
-actor Customer
-participant WebPage
-participant OrderController
-participant OrderService
-participant Database
-
-Customer -> WebPage: Select Product
-WebPage -> WebPage: Add to Cart
-Customer -> WebPage: Review Cart & Checkout
-WebPage -> OrderController: submitOrder()
-OrderController -> OrderService: createOrder(cart, user)
-OrderService -> Database: saveOrder(orderDetails)
-Database --> OrderService: Success (orderId)
-OrderService --> OrderController: Order Created
-OrderController --> WebPage: Order Confirmation
-WebPage --> Customer: Display Receipt & Order Number
-
-@enduml
+    Customer->>WebPage: Select Product & Add to Cart
+    Customer->>WebPage: Review Cart & Checkout
+    WebPage->>OrderController: submitOrder()
+    OrderController->>OrderService: createOrder(cart, user)
+    OrderService->>Database: saveOrder(orderDetails)
+    Database-->>OrderService: Success (orderId)
+    OrderService-->>OrderController: Order Created
+    OrderController-->>WebPage: Order Confirmation
+    WebPage-->>Customer: Display Receipt & Order Number
 ```
 
 ### Activity Diagram – Customer Journey
 
-```plantuml
-@startuml
-
-start
-:User Visits Store;
-:Register/Login;
-if (Login Successful?) then (Yes)
-    :Browse Product Categories;
-    :Search or Filter Products;
-    :View Product Details;
-    :Add Products to Cart;
-    :Review Cart Items;
-    if (Continue Shopping?) then (Yes)
-        :Back to browsing;
-    else (No)
-        :Proceed to Checkout;
-        :Enter Shipping Address;
-        :Select Payment Method;
-        :Place Order;
-        :Order Confirmation;
-        :Redirect to Order Tracking;
-    endif
-else (No)
-    :Display Error;
-    :End;
-endif
-stop
-
-@enduml
+```mermaid
+flowchart TD
+    A[User Visits Store] --> B[Register/Login]
+    B --> C{Login Successful?}
+    C -->|Yes| D[Browse Product Categories]
+    C -->|No| E[Display Error & End]
+    D --> F[Search or Filter Products]
+    F --> G[View Product Details]
+    G --> H[Add Products to Cart]
+    H --> I[Review Cart Items]
+    I --> J{Continue Shopping?}
+    J -->|Yes| F
+    J -->|No| K[Proceed to Checkout]
+    K --> L[Enter Shipping Address]
+    L --> M[Select Payment Method]
+    M --> N[Place Order]
+    N --> O[Order Confirmation]
+    O --> P[Redirect to Order Tracking]
+    P --> Q[End]
 ```
 
 ---
@@ -698,8 +687,8 @@ This project is intended for **educational and learning purposes** in computer s
 
 For issues, questions, or suggestions:
 
-- **GitHub Issues:** [Report an Issue](https://github.com/KHari07/HKFashion-Source/issues)
-- **Email:** Contact project maintainers for support
+* **GitHub Issues:** [Report an Issue](https://github.com/KHari07/HKFashion-Source/issues)
+* **Email:** [Contact the project maintainers](mailto:harikrishnak202020@gmail.com)
 
 ---
 
