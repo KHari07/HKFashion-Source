@@ -1,187 +1,243 @@
 # HK Fashion Store
 
-## Overview
+A comprehensive Java-based e-commerce platform for seamless online fashion shopping. This project demonstrates modern web development practices using the MVC architecture, servlets, JSP, and MySQL.
 
-HK Fashion Store is a web-based e-commerce application developed to provide users with a seamless online shopping experience for fashion products. The system allows customers to browse products, manage shopping carts, place orders, and track purchases. Administrators can manage products, categories, customers, and orders through a dedicated management interface.
+## 📋 Table of Contents
 
-The application follows the MVC (Model-View-Controller) architecture and is built using Java-based web technologies.
-
----
-
-## Features
-
-### Customer Features
-
-* User Registration and Login
-* Product Browsing
-* Product Search and Filtering
-* Product Details View
-* Shopping Cart Management
-* Order Placement
-* Order History Tracking
-* Profile Management
-
-### Admin Features
-
-* Secure Admin Login
-* Product Management (Add, Update, Delete)
-* Category Management
-* Customer Management
-* Order Management
-* Inventory Monitoring
-* Dashboard Overview
+- [Overview](#overview)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [System Architecture](#system-architecture)
+- [Project Structure](#project-structure)
+- [Database Design](#database-design)
+- [Installation & Setup](#installation--setup)
+- [Usage Guide](#usage-guide)
+- [UML Diagrams](#uml-diagrams)
+- [Testing](#testing)
+- [Future Enhancements](#future-enhancements)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
-## Technology Stack
+## 🎯 Overview
 
-### Frontend
+HK Fashion Store is a full-stack e-commerce web application that enables customers to browse and purchase fashion products with an intuitive interface. The platform includes comprehensive admin capabilities for managing products, categories, inventory, and customer orders.
 
-* HTML5
-* CSS3
-* JavaScript
-* Bootstrap
-
-### Backend
-
-* Java Servlets
-* JSP (Java Server Pages)
-
-### Database
-
-* MySQL
-
-### Server
-
-* Apache Tomcat
-
-### Development Tools
-
-* Eclipse IDE / IntelliJ IDEA
-* Git & GitHub
-* XAMPP/MySQL Server
+The application is built on a **three-tier architecture** (Presentation, Business Logic, and Data Access layers) ensuring scalability, maintainability, and separation of concerns.
 
 ---
 
-## System Architecture
+## ✨ Features
 
-The application follows a three-tier architecture:
+### 👥 Customer Features
 
-### Presentation Layer
+- **User Authentication**: Registration and secure login
+- **Product Catalog**: Browse all available fashion items
+- **Advanced Search & Filtering**: Find products by category, price, and keywords
+- **Detailed Product Views**: View comprehensive product information and specifications
+- **Shopping Cart Management**: Add, update, or remove items
+- **Order Processing**: Complete checkout and order placement
+- **Order Tracking**: View order history and status
+- **Profile Management**: Update personal information and preferences
 
-Handles user interactions through JSP pages and frontend components.
+### 🛠️ Admin Features
 
-### Business Layer
+- **Admin Dashboard**: Comprehensive overview of store metrics
+- **Product Management**: Create, update, and delete products
+- **Category Management**: Organize products into categories
+- **Customer Management**: View and manage customer accounts
+- **Order Management**: Process and track customer orders
+- **Inventory Monitoring**: Real-time stock level tracking
+- **Secure Access**: Admin-only login portal
 
-Processes application logic using Java Servlets and service classes.
+---
 
-### Data Access Layer
+## 🛠️ Technology Stack
 
-Communicates with the MySQL database through DAO classes.
+| Layer | Technologies |
+|-------|--------------|
+| **Frontend** | HTML5, CSS3, JavaScript, Bootstrap 4/5 |
+| **Backend** | Java Servlets, JSP (Java Server Pages) |
+| **Database** | MySQL 5.7+ |
+| **Server** | Apache Tomcat 9+ |
+| **Build Tools** | Maven (pom.xml) |
+| **Development** | Eclipse IDE / IntelliJ IDEA, Git & GitHub |
+| **Database Tools** | XAMPP, MySQL Workbench |
 
-```text
-+------------------+
-|    Client/User   |
-+--------+---------+
-         |
-         v
-+------------------+
-| JSP / Frontend   |
-+--------+---------+
-         |
-         v
-+------------------+
-| Java Servlets    |
-| Business Logic   |
-+--------+---------+
-         |
-         v
-+------------------+
-| DAO Layer        |
-+--------+---------+
-         |
-         v
-+------------------+
-| MySQL Database   |
-+------------------+
+---
+
+## 🏗️ System Architecture
+
+The application follows a **three-tier architecture** pattern:
+
+```
+┌─────────────────────────────────────┐
+│         Client / Browser            │
+│    (User Interface Layer)           │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│    JSP Pages & Frontend Assets      │
+│    (Presentation Layer)             │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│      Java Servlets & Services       │
+│    (Business Logic Layer)           │
+│  - Request Processing               │
+│  - Business Rules & Validation      │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│      DAO (Data Access Objects)      │
+│    (Persistence Layer)              │
+│  - Database Operations              │
+└──────────────┬──────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────┐
+│       MySQL Database                │
+│    (Data Storage Layer)             │
+└─────────────────────────────────────┘
 ```
 
+### Layer Responsibilities
+
+| Layer | Role |
+|-------|------|
+| **Presentation** | Handles all user interactions through JSP pages, HTML forms, and frontend components |
+| **Business Logic** | Processes application logic, validates data, manages workflows using Java Servlets and service classes |
+| **Data Access** | Communicates with MySQL database through DAO classes, handles CRUD operations |
+
 ---
 
-## Project Structure
+## 📁 Project Structure
 
-```text
+```
 HKFashionStore/
+├── src/                              # Java source code
+│   ├── controller/                   # Servlet controllers handling HTTP requests
+│   ├── dao/                          # Data Access Objects for database operations
+│   ├── model/                        # Entity classes (User, Product, Order, etc.)
+│   ├── service/                      # Business logic services
+│   └── util/                         # Utility classes (database connection, helpers)
 │
-├── src/
-│   ├── controller/
-│   ├── dao/
-│   ├── model/
-│   ├── service/
-│   └── util/
+├── WebContent/                       # Web resources (JSP, CSS, JS, images)
+│   ├── css/                          # Stylesheets
+│   ├── js/                           # JavaScript files
+│   ├── images/                       # Image assets
+│   ├── admin/                        # Admin panel JSP pages
+│   └── user/                         # User-facing JSP pages
 │
-├── WebContent/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│   ├── admin/
-│   └── user/
+├── database/                         # Database scripts
+│   └── hkfashionstore.sql           # SQL initialization script
 │
-├── database/
-│   └── hkfashionstore.sql
-│
-├── README.md
-└── pom.xml
+├── README.md                         # Project documentation
+├── pom.xml                           # Maven configuration
+└── .gitignore                        # Git ignore rules
 ```
 
 ---
 
-## Database Design
+## 🗄️ Database Design
 
-### User
+### Entity Relationship Model
 
-| Field    | Type    |
-| -------- | ------- |
-| user_id  | INT     |
-| name     | VARCHAR |
-| email    | VARCHAR |
-| password | VARCHAR |
-| phone    | VARCHAR |
-| address  | TEXT    |
+```
+User
+├── user_id (PK)
+├── name
+├── email
+├── password
+├── phone
+└── address
+    ├──┐ 1:N
+       ▼
+    Order
+    ├── order_id (PK)
+    ├── user_id (FK)
+    ├── total_amount
+    ├── order_date
+    └── status
+        ├──┐ M:N
+           ▼
+        Product
+        ├── product_id (PK)
+        ├── name
+        ├── description
+        ├── price
+        ├── stock
+        └── category_id (FK)
+            │
+            └──◄── 1:N ──┐
+                      Category
+                      ├── category_id (PK)
+                      └── category_name
+```
 
-### Product
+### Table Schemas
 
-| Field       | Type    |
-| ----------- | ------- |
-| product_id  | INT     |
-| name        | VARCHAR |
-| description | TEXT    |
-| price       | DECIMAL |
-| stock       | INT     |
-| category_id | INT     |
+#### Users Table
 
-### Category
+| Field | Type | Constraints |
+|-------|------|-------------|
+| user_id | INT | PRIMARY KEY, AUTO_INCREMENT |
+| name | VARCHAR(100) | NOT NULL |
+| email | VARCHAR(100) | NOT NULL, UNIQUE |
+| password | VARCHAR(255) | NOT NULL |
+| phone | VARCHAR(15) | - |
+| address | TEXT | - |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
 
-| Field         | Type    |
-| ------------- | ------- |
-| category_id   | INT     |
-| category_name | VARCHAR |
+#### Products Table
 
-### Order
+| Field | Type | Constraints |
+|-------|------|-------------|
+| product_id | INT | PRIMARY KEY, AUTO_INCREMENT |
+| name | VARCHAR(150) | NOT NULL |
+| description | TEXT | - |
+| price | DECIMAL(10,2) | NOT NULL |
+| stock | INT | NOT NULL |
+| category_id | INT | FOREIGN KEY |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
 
-| Field        | Type    |
-| ------------ | ------- |
-| order_id     | INT     |
-| user_id      | INT     |
-| total_amount | DECIMAL |
-| order_date   | DATE    |
-| status       | VARCHAR |
+#### Categories Table
+
+| Field | Type | Constraints |
+|-------|------|-------------|
+| category_id | INT | PRIMARY KEY, AUTO_INCREMENT |
+| category_name | VARCHAR(100) | NOT NULL, UNIQUE |
+
+#### Orders Table
+
+| Field | Type | Constraints |
+|-------|------|-------------|
+| order_id | INT | PRIMARY KEY, AUTO_INCREMENT |
+| user_id | INT | FOREIGN KEY, NOT NULL |
+| total_amount | DECIMAL(10,2) | NOT NULL |
+| order_date | DATE | NOT NULL |
+| status | VARCHAR(50) | DEFAULT 'Pending' |
+
+#### Order_Items Table
+
+| Field | Type | Constraints |
+|-------|------|-------------|
+| order_item_id | INT | PRIMARY KEY, AUTO_INCREMENT |
+| order_id | INT | FOREIGN KEY, NOT NULL |
+| product_id | INT | FOREIGN KEY, NOT NULL |
+| quantity | INT | NOT NULL |
+| price | DECIMAL(10,2) | NOT NULL |
 
 ---
 
-# UML Diagrams
+## 📊 UML Diagrams
 
-## Use Case Diagram
+### Use Case Diagram
 
 ```plantuml
 @startuml
@@ -191,120 +247,157 @@ actor Customer
 actor Admin
 
 rectangle HKFashionStore {
-
-Customer --> (Register)
-Customer --> (Login)
-Customer --> (Browse Products)
-Customer --> (Add To Cart)
-Customer --> (Place Order)
-Customer --> (View Orders)
-
-Admin --> (Admin Login)
-Admin --> (Manage Products)
-Admin --> (Manage Categories)
-Admin --> (Manage Customers)
-Admin --> (Manage Orders)
-
+    Customer --> (Register)
+    Customer --> (Login)
+    Customer --> (Browse Products)
+    Customer --> (Search Products)
+    Customer --> (View Product Details)
+    Customer --> (Add To Cart)
+    Customer --> (Manage Cart)
+    Customer --> (Checkout)
+    Customer --> (Place Order)
+    Customer --> (View Order History)
+    Customer --> (Manage Profile)
+    
+    Admin --> (Admin Login)
+    Admin --> (View Dashboard)
+    Admin --> (Manage Products)
+    Admin --> (Manage Categories)
+    Admin --> (Manage Customers)
+    Admin --> (Manage Orders)
+    Admin --> (Monitor Inventory)
 }
 
 @enduml
 ```
 
----
-
-## Class Diagram
+### Class Diagram
 
 ```plantuml
 @startuml
 
 class User {
-+userId
-+name
-+email
-+password
-+phone
-+address
+    -userId: int
+    -name: String
+    -email: String
+    -password: String
+    -phone: String
+    -address: String
+    +getUserId(): int
+    +setUserDetails(String, String): void
 }
 
 class Product {
-+productId
-+name
-+price
-+description
-+stock
+    -productId: int
+    -name: String
+    -price: double
+    -description: String
+    -stock: int
+    -categoryId: int
+    +getProductId(): int
+    +getPrice(): double
+    +updateStock(int): void
 }
 
 class Category {
-+categoryId
-+categoryName
+    -categoryId: int
+    -categoryName: String
+    +getCategoryId(): int
+    +getCategoryName(): String
 }
 
 class Cart {
-+cartId
-+addItem()
-+removeItem()
+    -cartId: int
+    -cartItems: List<CartItem>
+    +addItem(Product, int): void
+    +removeItem(int): void
+    +getTotal(): double
+    +clearCart(): void
 }
 
 class Order {
-+orderId
-+orderDate
-+totalAmount
-+status
+    -orderId: int
+    -userId: int
+    -orderDate: Date
+    -totalAmount: double
+    -status: String
+    -orderItems: List<OrderItem>
+    +getOrderId(): int
+    +getStatus(): String
+    +updateStatus(String): void
 }
 
-User "1" --> "1" Cart
-User "1" --> "*" Order
-Category "1" --> "*" Product
-Cart "*" --> "*" Product
-Order "*" --> "*" Product
+class OrderItem {
+    -orderItemId: int
+    -orderId: int
+    -productId: int
+    -quantity: int
+    -price: double
+}
+
+User "1" --> "1" Cart : owns
+User "1" --> "*" Order : places
+Category "1" --> "*" Product : contains
+Cart "*" --> "*" Product : contains
+Order "1" --> "*" OrderItem : has
+Product "1" <-- "*" OrderItem : ordered
 
 @enduml
 ```
 
----
-
-## Sequence Diagram – Order Placement
+### Sequence Diagram – Order Placement
 
 ```plantuml
 @startuml
 
 actor Customer
+participant WebPage
+participant OrderController
+participant OrderService
+participant Database
 
-Customer -> WebPage : Select Product
-WebPage -> Cart : Add Product
-Customer -> WebPage : Checkout
-WebPage -> OrderController : Create Order
-OrderController -> Database : Save Order
-Database --> OrderController : Success
-OrderController --> WebPage : Order Confirmation
-WebPage --> Customer : Display Confirmation
+Customer -> WebPage: Select Product
+WebPage -> WebPage: Add to Cart
+Customer -> WebPage: Review Cart & Checkout
+WebPage -> OrderController: submitOrder()
+OrderController -> OrderService: createOrder(cart, user)
+OrderService -> Database: saveOrder(orderDetails)
+Database --> OrderService: Success (orderId)
+OrderService --> OrderController: Order Created
+OrderController --> WebPage: Order Confirmation
+WebPage --> Customer: Display Receipt & Order Number
 
 @enduml
 ```
 
----
-
-## Activity Diagram
+### Activity Diagram – Customer Journey
 
 ```plantuml
 @startuml
 
 start
-
+:User Visits Store;
 :Register/Login;
-
-:Browse Products;
-
-:Add Products to Cart;
-
-:Checkout;
-
-:Make Payment;
-
-:Place Order;
-
-:Generate Invoice;
-
+if (Login Successful?) then (Yes)
+    :Browse Product Categories;
+    :Search or Filter Products;
+    :View Product Details;
+    :Add Products to Cart;
+    :Review Cart Items;
+    if (Continue Shopping?) then (Yes)
+        :Back to browsing;
+    else (No)
+        :Proceed to Checkout;
+        :Enter Shipping Address;
+        :Select Payment Method;
+        :Place Order;
+        :Order Confirmation;
+        :Redirect to Order Tracking;
+    endif
+else (No)
+    :Display Error;
+    :End;
+endif
 stop
 
 @enduml
@@ -312,102 +405,312 @@ stop
 
 ---
 
-## Installation Guide
+## 🚀 Installation & Setup
 
 ### Prerequisites
 
-* Java JDK 8 or Higher
-* Apache Tomcat 9+
-* MySQL Server
-* Eclipse IDE / IntelliJ IDEA
+Before starting, ensure you have the following installed:
 
-### Setup Steps
+- **Java JDK 8+** - [Download](https://www.oracle.com/java/technologies/javase-downloads.html)
+- **Apache Tomcat 9+** - [Download](https://tomcat.apache.org/)
+- **MySQL Server 5.7+** - [Download](https://dev.mysql.com/downloads/mysql/)
+- **IDE** - Eclipse IDE or IntelliJ IDEA (optional but recommended)
+- **Git** - Version control system
 
-1. Clone the repository
+### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/your-repository/HKFashionStore.git
+git clone https://github.com/KHari07/HKFashion-Source.git
+cd HKFashion-Source
 ```
 
-2. Import project into Eclipse/IntelliJ.
+### Step 2: Import Project into IDE
 
-3. Create MySQL Database
+**Eclipse:**
+1. File → Import → General → Existing Projects into Workspace
+2. Select the cloned directory
+3. Click Finish
+
+**IntelliJ IDEA:**
+1. File → Open → Select the project directory
+2. Configure JDK and Tomcat in Project Settings
+
+### Step 3: Create MySQL Database
+
+Open MySQL Command Line or MySQL Workbench and run:
 
 ```sql
 CREATE DATABASE hkfashionstore;
+USE hkfashionstore;
 ```
 
-4. Import SQL file.
+### Step 4: Import SQL Schema
 
-5. Configure database credentials.
+```bash
+mysql -u root -p hkfashionstore < database/hkfashionstore.sql
+```
+
+Or import the SQL file through MySQL Workbench:
+1. MySQL Workbench → File → Open SQL Script
+2. Select `database/hkfashionstore.sql`
+3. Execute the script
+
+### Step 5: Configure Database Connection
+
+Create or update `src/util/DBConnection.java`:
 
 ```java
-DB_URL=jdbc:mysql://localhost:3306/hkfashionstore
-DB_USER=root
-DB_PASSWORD=password
+public class DBConnection {
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/hkfashionstore";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "your_password"; // Change this
+    private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+    
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName(DB_DRIVER);
+        return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+    }
+}
 ```
 
-6. Deploy project to Tomcat.
+### Step 6: Configure Tomcat Server
 
-7. Start Tomcat Server.
+1. **Eclipse:**
+   - Window → Preferences → Server → Runtime Environments
+   - Click Add → Apache Tomcat v9.0
+   - Select Tomcat installation directory
 
-8. Open browser:
+2. **IntelliJ IDEA:**
+   - Run → Edit Configurations → Add New Configuration → Tomcat Server
+   - Select Local → Configure Tomcat path
 
-```text
+### Step 7: Deploy Application
+
+**Eclipse:**
+1. Right-click project → Run As → Run on Server
+2. Select Apache Tomcat v9.0
+
+**IntelliJ IDEA:**
+1. Run → Run 'Tomcat Server'
+
+### Step 8: Access the Application
+
+Open your browser and navigate to:
+
+```
 http://localhost:8080/HKFashionStore
 ```
 
 ---
 
-## Future Enhancements
+## 💻 Usage Guide
 
-* Online Payment Gateway Integration
-* Product Recommendation System
-* AI-Based Fashion Suggestions
-* Wishlist Functionality
-* Mobile Application Support
-* Email Notifications
-* Inventory Analytics Dashboard
-* Multi-Vendor Support
+### For Customers
+
+1. **Registration**: Create a new account with email and password
+2. **Browse**: Explore products by category or search for specific items
+3. **Shopping**: Add items to cart and adjust quantities
+4. **Checkout**: Review cart, enter shipping address, and place order
+5. **Track Orders**: View order history and current order status
+
+### For Administrators
+
+1. **Login**: Access admin panel at `/admin/login.jsp`
+2. **Dashboard**: View sales metrics and inventory status
+3. **Manage Products**: Add new products, update prices, and manage stock
+4. **Manage Orders**: Process orders and update status
+5. **Monitor Inventory**: Track low-stock items and reorder
 
 ---
 
-## Testing
+## ✅ Testing
 
 ### Functional Testing
 
-* Login Validation
-* Registration Validation
-* Product Search
-* Cart Operations
-* Checkout Process
+- [ ] User registration with validation
+- [ ] Login authentication and session management
+- [ ] Product search and filtering functionality
+- [ ] Shopping cart add/remove/update operations
+- [ ] Order checkout process
+- [ ] Admin product management CRUD operations
+- [ ] Order status updates
 
 ### Integration Testing
 
-* Database Connectivity
-* Servlet-DAO Integration
-* Order Processing
+- [ ] Database connectivity and transactions
+- [ ] Servlet-DAO integration
+- [ ] Service layer business logic
+- [ ] Order processing workflow
+- [ ] User authentication flow
 
 ### System Testing
 
-* End-to-End User Flow
+- [ ] End-to-end customer journey
+- [ ] Admin workflow validation
+- [ ] Data consistency across operations
+- [ ] Session management
+- [ ] Error handling and recovery
+
+### Test Scenarios
+
+**Customer Registration Test:**
+- Valid email format
+- Password strength validation
+- Duplicate email prevention
+- Phone number format validation
+
+**Order Placement Test:**
+- Cart item persistence
+- Inventory deduction
+- Order confirmation
+- Email notification (future)
 
 ---
 
-## Conclusion
+## 🔮 Future Enhancements
 
-HK Fashion Store is a complete e-commerce platform designed to streamline online fashion shopping. The project demonstrates the implementation of Java web technologies, MVC architecture, database management, and software engineering principles. The system provides a scalable foundation for future enhancements and real-world deployment.
+| Feature | Priority | Status |
+|---------|----------|--------|
+| Online Payment Gateway Integration (Stripe, PayPal) | High | ⏳ Planned |
+| Email Notifications | High | ⏳ Planned |
+| Product Recommendation System | Medium | ⏳ Planned |
+| Wishlist Functionality | Medium | ⏳ Planned |
+| AI-Based Fashion Suggestions | Medium | 🔄 In Research |
+| Mobile Application (Android/iOS) | High | ⏳ Planned |
+| Inventory Analytics Dashboard | Medium | ⏳ Planned |
+| Multi-Vendor Support | Low | ⏳ Planned |
+| Customer Reviews & Ratings | Medium | ⏳ Planned |
+| Advanced Search with AI | Low | 🔄 In Research |
+| Two-Factor Authentication (2FA) | High | ⏳ Planned |
+| Internationalization (Multi-language Support) | Low | ⏳ Planned |
 
 ---
 
-## Authors
+## 🐛 Troubleshooting
 
-Developed as an Academic/Industrial Project.
+### Common Issues & Solutions
 
-HK Fashion Store Team
+#### Issue: "Connection refused" to MySQL
+
+**Solution:**
+```bash
+# Ensure MySQL server is running
+# Windows
+net start MySQL80
+
+# macOS
+brew services start mysql
+
+# Linux
+sudo service mysql start
+
+# Verify connection
+mysql -u root -p
+```
+
+#### Issue: Tomcat Not Starting
+
+**Solution:**
+- Check if port 8080 is already in use: `netstat -an | grep 8080`
+- Verify JAVA_HOME environment variable is set
+- Check Tomcat logs: `catalina.out`
+
+#### Issue: "404 Not Found" Error
+
+**Solution:**
+- Verify application name matches the URL: `http://localhost:8080/HKFashionStore`
+- Ensure project is deployed correctly to Tomcat
+- Check if JSP pages exist in `WebContent` directory
+
+#### Issue: Database Connection Fails
+
+**Solution:**
+- Verify MySQL credentials in `DBConnection.java`
+- Check if database `hkfashionstore` exists
+- Ensure MySQL JDBC driver is in classpath
+- Check MySQL server status
+
+#### Issue: JSP Pages Display as Text
+
+**Solution:**
+- Ensure Tomcat is properly configured in IDE
+- Verify file extensions are `.jsp` not `.html`
+- Restart Tomcat server
+- Clear browser cache
+
+### Debug Mode
+
+Enable debug logging in `util/Logger.java`:
+
+```java
+public class Logger {
+    public static final boolean DEBUG = true; // Set to true for debugging
+    
+    public static void log(String message) {
+        if (DEBUG) {
+            System.out.println("[LOG] " + message);
+        }
+    }
+}
+```
 
 ---
 
-## License
+## 🤝 Contributing
 
-This project is intended for educational and learning purposes.
+Contributions are welcome! Please follow these guidelines:
+
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/your-feature`
+3. **Commit** changes with clear messages: `git commit -m "Add feature: description"`
+4. **Push** to your branch: `git push origin feature/your-feature`
+5. **Submit** a Pull Request with a detailed description
+
+### Code Standards
+
+- Follow Java naming conventions (camelCase for variables/methods, PascalCase for classes)
+- Add meaningful comments for complex logic
+- Maintain consistent indentation (4 spaces)
+- Write unit tests for new features
+- Update documentation as needed
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the LICENSE file for details.
+
+This project is intended for **educational and learning purposes** in computer science and web development.
+
+---
+
+## 👥 Authors & Team
+
+**Project Lead:** KHari07
+
+**Developed as:** Academic/Industrial Project
+
+**Last Updated:** June 2026
+
+---
+
+## 📞 Support & Contact
+
+For issues, questions, or suggestions:
+
+- **GitHub Issues:** [Report an Issue](https://github.com/KHari07/HKFashion-Source/issues)
+- **Email:** Contact project maintainers for support
+
+---
+
+## 📚 Additional Resources
+
+- [Java Servlet Documentation](https://docs.oracle.com/cd/E17802_01/products/products/servlet/index.html)
+- [JSP Tutorial](https://www.oracle.com/java/technologies/jsp.html)
+- [MySQL Documentation](https://dev.mysql.com/doc/)
+- [Apache Tomcat Documentation](https://tomcat.apache.org/tomcat-9.0-doc/)
+- [Bootstrap Documentation](https://getbootstrap.com/docs/)
+
+---
+
+**Happy Coding! 🚀**
