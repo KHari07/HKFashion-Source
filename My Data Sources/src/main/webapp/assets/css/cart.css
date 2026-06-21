@@ -1,0 +1,254 @@
+/* cart.css */
+
+.cart-wrapper {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 0 20px;
+    min-height: 60vh;
+}
+
+.cart-header {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #2b2b2f;
+    padding-bottom: 15px;
+}
+
+.empty-cart-msg {
+    text-align: center;
+    color: #888;
+    font-size: 20px;
+    padding: 50px 0;
+}
+
+.btn-shop-now {
+    display: inline-block;
+    background-color: #70d8e7;
+    color: black;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.2s;
+}
+
+.btn-shop-now:hover {
+    transform: translateY(-2px);
+}
+
+/* Individual Cart Item Row */
+.cart-row {
+    display: flex;
+    align-items: center;
+    background-color: #1e1e22;
+    padding: 20px 30px;
+    margin-bottom: 15px;
+    border-radius: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.cart-item-name {
+    flex: 2;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-item-price {
+    flex: 1;
+    color: #aaa;
+    font-size: 16px;
+}
+
+/* Quantity Controls */
+.cart-quantity-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.qty-input {
+    width: 60px;
+    background-color: #2b2b2f;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.qty-input:focus {
+    outline: none;
+    border-color: #70d8e7;
+}
+
+.btn-update {
+    background-color: transparent;
+    color: #70d8e7;
+    border: 1px solid #70d8e7;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-update:hover {
+    background-color: #70d8e7;
+    color: black;
+}
+
+.cart-item-total {
+    flex: 1;
+    color: #70d8e7;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* Remove Button */
+.btn-remove {
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
+    border: 1px solid rgba(255, 77, 77, 0.3);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 20px;
+    transition: all 0.2s;
+}
+
+.btn-remove:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+/* Checkout Summary Section */
+.cart-summary {
+    background-color: #1e1e22;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: right;
+    margin-top: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.grand-total {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.grand-total span {
+    color: #70d8e7;
+    font-weight: bold;
+    font-size: 32px;
+    margin-left: 15px;
+}
+
+.btn-checkout {
+    background-color: #70d8e7;
+    color: black;
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.btn-checkout:hover {
+    transform: translateY(-2px);
+}
+/* --- PRO UPGRADES --- */
+
+/* Minimalist Image Placeholder */
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    background-color: #2a2a30;
+    border-radius: 8px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Upgraded Summary Box */
+.cart-summary {
+    background-color: #1e1e22;
+    padding: 30px;
+    border-radius: 16px;
+    margin-top: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 400px;
+    float: right; /* Aligns the box neatly to the right */
+    width: 100%;
+}
+
+.summary-title {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    border-bottom: 1px solid #2b2b2f;
+    padding-bottom: 10px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    color: #aaa;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.summary-row.free-shipping {
+    color: #70d8e7;
+}
+
+.grand-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed #444;
+}
+
+.grand-total span {
+    color: #70d8e7;
+    font-weight: bold;
+    font-size: 28px;
+    margin-left: 0;
+}
+
+.btn-checkout {
+    display: block;
+    text-align: center;
+    margin-top: 25px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Clear the float so the footer doesn't overlap */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

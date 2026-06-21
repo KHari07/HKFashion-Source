@@ -1,0 +1,107 @@
+/* GLOBAL DARK THEME STYLES */
+:root {
+    --bg-color: #2b2b2f;
+    --card-bg: #1e1e22;
+    --card-lighter: #2a2a30;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --accent-cyan: #70d8e7;
+    --accent-purple: #7467b3;
+    --border-radius: 12px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: block !important; /* THIS KILLS THE SHRINK-WRAP BUG FOREVER */
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+/* NAVBAR STYLES */
+.navbar {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.search-bar {
+    display: flex;
+}
+
+.search-bar input {
+    padding: 10px 20px;
+    border-radius: 20px 0 0 20px;
+    border: none;
+    width: 300px;
+    background-color: var(--card-lighter);
+    color: white;
+}
+
+.search-btn {
+    background-color: var(--accent-cyan);
+    color: #000;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 0 20px 20px 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.nav-links a:hover {
+    color: var(--accent-cyan);
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--card-bg);
+    margin-top: auto;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-container {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* The Professional Hover-Lift Effect */
+/* We target the div directly inside your grid to ensure it moves */
+.grid-container a div, 
+.grid a div {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.grid-container a:hover div, 
+.grid a:hover div {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+}

@@ -1,0 +1,144 @@
+/* product_details.css */
+
+.details-wrapper {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 40px;
+}
+
+/* NEW: The Unified Card Wrapper */
+.product-details-card {
+    display: flex;
+    background-color: #1e1e22; /* Lighter card background */
+    border-radius: 24px;
+    padding: 40px;
+    gap: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Left Side: Image */
+.details-image-box {
+    flex: 1;
+    background-color: #2a2a30;
+    border-radius: 16px;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Right Side: Information */
+.details-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.details-brand {
+    color: #aaa;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.details-title {
+    font-size: 36px;
+    margin: 0 0 15px 0;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.details-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+/* NEW: Subheadings for Description and Sizes */
+.section-title {
+    font-size: 18px;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+}
+
+.details-desc {
+    color: #aaaaaa;
+    line-height: 1.6;
+    font-size: 15px;
+    margin: 0 0 30px 0;
+}
+
+/* NEW: Size Selectors */
+.size-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.size-btn {
+    background-color: #2b2b2f;
+    color: #aaa;
+    border: 1px solid #444;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.size-btn:hover {
+    border-color: #70d8e7;
+    color: #fff;
+}
+
+.size-hint {
+    color: #aaa;
+    font-size: 12px;
+    margin-bottom: 30px;
+}
+
+/* Add to Cart Controls */
+.details-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn-add-cart {
+    background-color: #70d8e7;
+    color: black;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-add-cart:hover {
+    transform: translateY(-2px);
+}
+
+/* NEW: Secondary Back Button */
+.btn-secondary {
+    background-color: #2b2b2f;
+    color: #aaa;
+    border: none;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background-color: #3a3a40;
+    color: #fff;
+}
